@@ -7,76 +7,70 @@ To implement Opening and Closing using Python and OpenCV.
 2. OpenCV
 ## Algorithm:
 ### Step1:
-Import the necessary packages
-
+<br>
+Load the input image using cv2.imread().
 
 ### Step2:
-Create the Text using cv2.putText
+<br>
+Define a structuring element (e.g., 5x5 rectangular) using cv2.getStructuringElement().
+
 
 ### Step3:
-Create the structuring element
+<br>
+Perform erosion followed by dilation using cv2.morphologyEx() with the cv2.MORPH_OPEN operation.
+
 
 ### Step4:
-Use Opening operation
+<br>
+Perform dilation followed by erosion using cv2.morphologyEx() with the cv2.MORPH_CLOSE operation.
+
 
 ### Step5:
-Use Closing Operation
+<br>
+Use plt.subplot() to show the original, opening, and closing images side by side.
 
 
  
 ## Program:
 
-```
-
-# Developed By: DIVYA E
-# Register No: 212223230050
-
-
+``` Python
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
-#i) Create the Text using cv2.putText
+
 img1=np.zeros((300,600),dtype='uint8')
 font=cv2.FONT_ITALIC
-img2=cv2.putText(img1,"ANURADHA N",(5,100),font,3,(255,0,0),5,cv2.LINE_AA)
+img2=cv2.putText(img1,"SaVeEtHa",(5,100),font,3,(255,0,0),5,cv2.LINE_AA)
 cv2.imshow("Original",img2)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
-#ii) Create the structuring element
-
 #kernel1=cv2.getStructuringElement(cv2.MORPH_RECT,(21,21))
 #kernel2=cv2.getStructuringElement(cv2.MORPH_RECT,(9,9))
-kernel1=cv2.getStructuringElement(cv2.MORPH_RECT,(11,11))
-kernel2=cv2.getStructuringElement(cv2.MORPH_RECT,(5,5))
-
-#iii) Use Opening operation
+kernel1=cv2.getStructuringElement(cv2.MORPH_RECT,(21,21))
+kernel2=cv2.getStructuringElement(cv2.MORPH_RECT,(9,9))
 
 img4=cv2.morphologyEx(img1,cv2.MORPH_OPEN,kernel2)
 cv2.imshow("Opening",img4)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
 
-#iv) Use Closing Operation
 img3=cv2.morphologyEx(img1,cv2.MORPH_CLOSE,kernel1)
 cv2.imshow("Closing",img3)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
-
 ```
 ## Output:
- 
-### Display the input Image
 
-![image](https://github.com/user-attachments/assets/72c878fb-4f16-4828-91ac-0da9d084a5d5)
+### Display the input Image
+![image](https://github.com/user-attachments/assets/67432ddb-f6a3-4cc5-9775-0695c7f1dd59)
+
 
 ### Display the result of Opening
-![image](https://github.com/user-attachments/assets/5a7c9d71-c701-46ba-805f-906381a33592)
-
+![image](https://github.com/user-attachments/assets/4f7c4835-081a-442a-bdf3-cbd522721fdb)
 
 ### Display the result of Closing
-![image](https://github.com/user-attachments/assets/2e0d6afe-2536-41e5-ada0-53e4e590c741)
-
+![image](https://github.com/user-attachments/assets/831a1c21-72c4-422c-80b9-c8c21230a137)
 
 
 ## Result
